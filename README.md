@@ -1,11 +1,9 @@
 # HitThemAll
-Arkanoid-like web browser game written in Phaser 3 framework
+[Arkanoid](https://en.wikipedia.org/wiki/Arkanoid)-like web browser game written in Phaser 3 framework
 
 ## Synopsis
 
 Repository of a workshop to learn web game development with [Phaser](http://phaser.io/).
-
-The game to develop will be an [Arkanoid](https://en.wikipedia.org/wiki/Arkanoid) like.
 
 ### Install
 
