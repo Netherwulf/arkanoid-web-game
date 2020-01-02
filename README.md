@@ -13,17 +13,17 @@ Git and Node.js are required
 
 1. Clone sources
 
-	git clone https://github.com/Netherwulf/arkanoid-web-game
+	`git clone https://github.com/Netherwulf/arkanoid-web-game`
 
 2. Goto directory
 
-	cd phaser-example-arkanoid
+	`cd phaser-example-arkanoid`
 
 3. Install dependencies
 
-	npm install -g gulp
-	npm install
+	`npm install -g gulp`<br><br>
+	`npm install`
 
-4. Enjoy :)
+4. Use one simple command to run :)
 
-	gulp
+	`gulp`
