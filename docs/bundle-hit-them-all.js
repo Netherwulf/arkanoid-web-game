@@ -97793,10 +97793,10 @@ var style = {
 
 function _preload() {
   // console.log('💤 Preload game');
-  game.load.image('ball', 'assets/ball.png');
-  game.load.image('bar', 'assets/bar.png');
-  game.load.image('brick', 'assets/brick03.png');
-  game.load.image('brick-dust','assets/brick-dust03.png');
+  game.load.image('ball', 'game/assets/ball.png');
+  game.load.image('bar', 'game/assets/bar.png');
+  game.load.image('brick', 'game/assets/brick03.png');
+  game.load.image('brick-dust','game/assets/brick-dust03.png');
   //  Load the Google WebFont Loader script
   game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js');
 }
@@ -97825,7 +97825,7 @@ function _create() {
   });
   var audio = document.createElement("AUDIO")
   document.body.appendChild(audio);
-  audio.src = 'assets/main_song.mp3';
+  audio.src = 'game/assets/main_song.mp3';
   audio.loop = true;
   audio.volume = 0.2;
 
@@ -97945,7 +97945,7 @@ function _breakBrick(ball, brick) {
   brick.destruct();
   var brick_hit_sound = document.createElement("AUDIO")
   document.body.appendChild(brick_hit_sound);
-  brick_hit_sound.src = 'assets/brick_hit.mp3';
+  brick_hit_sound.src = 'game/assets/brick_hit.mp3';
   var hitPlayPromise = brick_hit_sound.play();
   if(hitPlayPromise !== undefined){
     hitPlayPromise.then(function(){
@@ -98007,7 +98007,7 @@ function _loseBall() {
   message.text = 'You\'ve lost! :( (but hit ' + hitCount + brickForm;
   var lose_sound = document.createElement("AUDIO")
   document.body.appendChild(lose_sound);
-  lose_sound.src = 'assets/lose_sound.mp3';
+  lose_sound.src = 'game/assets/lose_sound.mp3';
   var losePlayPromise = lose_sound.play();
   if(losePlayPromise !== undefined){
     losePlayPromise.then(function(){
@@ -98023,7 +98023,7 @@ function _winGame() {
   message.text = 'You win! :)';
   var win_sound = document.createElement("AUDIO")
   document.body.appendChild(win_sound);
-  win_sound.src = 'assets/win_sound.mp3';
+  win_sound.src = 'game/assets/win_sound.mp3';
   var winPlayPromise = win_sound.play();
   if(winPlayPromise !== undefined){
     winPlayPromise.then(function(){
