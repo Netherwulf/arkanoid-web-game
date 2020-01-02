@@ -4,9 +4,9 @@ var SCALE = 3;
 
 var game = new Phaser.Game(
   // Game width
-  360 * SCALE,
+  360 * SCALE, //120 for tests
   // Game height
-  180 * SCALE,
+  180 * SCALE, //60 for tests
   // Game renderer (WebGL, Canvas, auto)
   Phaser.AUTO,
   // Game id in index.html
@@ -31,7 +31,7 @@ WebFontConfig = {
   active: function() { game.time.events.add(Phaser.Timer.SECOND, _createMessage, this); },
   //  The Google Fonts we want to load (specify as many as you like in the array)
   google: {
-    families: ['Cosmic', 'Atomic Age', 'Space Mono', 'Pacifico', 'Cookie']
+    families: ['Roboto', 'Montserrat', 'Cosmic', 'Atomic Age', 'Space Mono', 'Pacifico', 'Cookie']
   }
 };
 
@@ -46,6 +46,8 @@ var bar = null;
 var barSpeed = 200;
 var bricks;
 var brickCount;
+
+var hitCount;
 
 var spaceKey;
 
@@ -87,24 +89,18 @@ function _create() {
   context.resume().then(() => {
     console.log('Playback resumed successfully');
   });
-  // var audio = new Audio('game/assets/main_song.mp3');
-  // audio.play();
   var audio = document.createElement("AUDIO")
   document.body.appendChild(audio);
   audio.src = 'game/assets/main_song.mp3';
   audio.loop = true;
-  audio.volume = 0.5;
+  audio.volume = 0.2;
 
-  // document.body.addEventListener("mousemove", function () {
-  //     audio.play()
-  // })
   var playPromise = audio.play();
   if(playPromise !== undefined){
     playPromise.then(function(){
       // audio.pause();
     }).catch(function(error){
          console.error(error);
-        //....
     });
   }
 }
@@ -191,6 +187,7 @@ function _createBricks() {
     }
   }
   brickCount = nbColumnBrick * nbRowBrick;
+  hitCount = 0;
   return bricks;
 }
 
@@ -210,15 +207,6 @@ function _reflect(bar, ball) {
   }
 }
 
-// utility wait function
-function wait(ms){
-  var start = new Date().getTime();
-  var end = start;
-  while(end < start + ms) {
-    end = new Date().getTime();
- }
-}
-
 function _breakBrick(ball, brick) {
   brick.destruct();
   var brick_hit_sound = document.createElement("AUDIO")
@@ -227,18 +215,13 @@ function _breakBrick(ball, brick) {
   var hitPlayPromise = brick_hit_sound.play();
   if(hitPlayPromise !== undefined){
     hitPlayPromise.then(function(){
-      // wait(1000);
-      // console.log('promise się udał');
       // brick_hit_sound.pause();
     }).catch(function(error){
          console.error(error);
-        //....
     });
   }
-  // document.body.addEventListener("canplay", function () {
-  //   brick_hit_sound.play()
-  // })
   brickCount--;
+  hitCount++;
   if (brickCount <= 0) {
     _winGame();
   }
@@ -281,13 +264,39 @@ function _launchBall() {
 function _loseBall() {
   stateGameOver = true;
   ball.body.velocity.setTo(0);
-  message.text = 'You lost! :(';
+  if(hitCount == 1) {
+    brickForm = ' brick!)';
+  }
+  else {
+    brickForm = ' bricks!)';
+  }
+  message.text = 'You\'ve lost! :( (but hit ' + hitCount + brickForm;
+  var lose_sound = document.createElement("AUDIO")
+  document.body.appendChild(lose_sound);
+  lose_sound.src = 'game/assets/lose_sound.mp3';
+  var losePlayPromise = lose_sound.play();
+  if(losePlayPromise !== undefined){
+    losePlayPromise.then(function(){
+    }).catch(function(error){
+         console.error(error);
+    });
+  }
 }
 
 function _winGame() {
   stateGameOver = true;
   ball.body.velocity.setTo(0);
   message.text = 'You win! :)';
+  var win_sound = document.createElement("AUDIO")
+  document.body.appendChild(win_sound);
+  win_sound.src = 'game/assets/win_sound.mp3';
+  var winPlayPromise = win_sound.play();
+  if(winPlayPromise !== undefined){
+    winPlayPromise.then(function(){
+    }).catch(function(error){
+         console.error(error);
+    });
+  }
 }
 
 /***************************************************/
