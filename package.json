@@ -1,0 +1,52 @@
+{
+  "name": "hit-them-all",
+  "version": "0.0.1",
+  "description": "Simple web game created to improve my Phaser skills",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Netherwulf/arkanoid-web-game.git"
+  },
+  "keywords": [
+    "workshop"
+  ],
+  "author": "Kamil Kanclerz <k.kanclerz4@gmail.com>",
+  "license": "GPL-3.0",
+  "browser": {
+    "phaser": "./node_modules/phaser/dist/phaser.js"
+  },
+  "browserify-shim": {
+    "phaser": {
+      "exports": "Phaser"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "phaser": "2.4.6"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "browserify": "^11.1.0",
+    "browserify-shim": "^3.8.12",
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-template": "^3.0.0",
+    "gulp-util": "^3.0.7",
+    "run-sequence": "^1.1.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/Netherwulf/arkanoid-web-game/issues"
+  },
+  "homepage": "https://github.com/Netherwulf/arkanoid-web-game#readme"
+}
