@@ -15,7 +15,7 @@ Git and Node.js are required
 
 2. Goto directory
 
-	`cd phaser-example-arkanoid`
+	`cd arkanoid-web-game`
 
 3. Install dependencies
 
