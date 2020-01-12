@@ -97775,7 +97775,7 @@ var stateGameStarted = false;
 var stateGameOver = false;
 
 var ball = null;
-var ballSpeed = 180;
+var ballSpeed = 250;
 var bar = null;
 var barSpeed = 200;
 var bricks;

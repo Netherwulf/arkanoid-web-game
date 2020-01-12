@@ -11,7 +11,7 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var plumber = require('gulp-plumber');
 var template = require('gulp-template');
-var kebabCase = require('lodash/string/kebabCase');
+// var kebabCase = require('lodash/string/kebabCase');
 var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
@@ -55,7 +55,7 @@ gulp.task('build-index', function() {
     .pipe(template({
       title: pkg.name,
       bundle: paths.js.bundle,
-      gameId: kebabCase(pkg.name)
+      gameId: pkg.name//kebabCase(pkg.name)
     }))
     .pipe(gulp.dest(paths.index.dest))
     .pipe(reload({stream: true}));
