@@ -33,7 +33,7 @@
     "phaser": "2.4.6"
   },
   "devDependencies": {
-    "browser-sync": "^2.11.1",
+    "browser-sync": "^2.27.10",
     "browserify": "^17.0.0",
     "browserify-shim": "^3.8.12",
     "del": "^2.0.2",
